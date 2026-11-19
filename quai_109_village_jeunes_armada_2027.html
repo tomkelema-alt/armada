@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUAI 109 — Plan Réel du Village 18-25 ans • Armada 2027</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400;12..96,75..100,600;12..96,75..100,800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        creme: '#F3EAD3',
+                        bleuSeine: '#2C5FA8',
+                        terracotta: '#D2673A',
+                        bleuNuit: '#1E3A6E'
+                    },
+                    fontFamily: {
+                        sans: ['"Bricolage Grotesque"', 'sans-serif'],
+                        condensed: ['"Bricolage Grotesque"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F3EAD3;
+            color: #1E3A6E;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Typographie condensée ExtraBold conforme au mood board */
+        .title-condensed {
+            font-variation-settings: "wdth" 80, "wght" 800;
+            letter-spacing: -0.02em;
+        }
+
+        /* Style Papier Découpé : formes pleines, bords organiques aux ciseaux, sans dégradé ni ombre douce */
+        .cutout-card {
+            clip-path: polygon(1% 0%, 99% 1%, 100% 98%, 0% 99%);
+            transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .cutout-card-alt {
+            clip-path: polygon(0% 1%, 100% 0%, 99% 99%, 1% 98%);
+            transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .cutout-interactive {
+            cursor: pointer;
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .cutout-interactive:hover {
+            transform: scale(1.025) rotate(-0.8deg);
+            z-index: 20;
+        }
+        .cutout-interactive.is-active {
+            transform: scale(1.03) rotate(0.8deg);
+            outline: 3px dashed #1E3A6E;
+            outline-offset: 4px;
+            z-index: 25;
+        }
+
+        /* Animation légère des fanions et formes découpées ("ça danse") */
+        @keyframes sway {
+            0%, 100% { transform: rotate(-1.5deg); }
+            50% { transform: rotate(1.5deg); }
+        }
+        .dance-sway {
+            animation: sway 4s ease-in-out infinite;
+        }
+        .dance-sway-delay {
+            animation: sway 4.5s ease-in-out 1.2s infinite;
+        }
+
+        /* Toit de barnum découpé aux ciseaux */
+        .barnum-roof {
+            clip-path: polygon(6% 0%, 94% 0%, 100% 100%, 88% 92%, 75% 100%, 62% 92%, 50% 100%, 38% 92%, 25% 100%, 12% 92%, 0% 100%);
+        }
+        .barnum-body {
+            clip-path: polygon(2% 0%, 98% 0%, 99% 98%, 1% 100%);
+        }
+
+        /* Texture papier très subtile par motif géométrique pur */
+        .paper-bg {
+            background-color: #F3EAD3;
+            background-image: radial-gradient(#1E3A6E12 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="paper-bg min-h-screen flex flex-col selection:bg-terracotta selection:text-creme">
+
+    <!-- EN-TÊTE COMPACT QUAI 109 -->
+    <header class="w-full max-w-7xl mx-auto px-4 pt-5 pb-3 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <!-- Logo QUAI 109 fidèle au mood board (avec spirale abysse dans le 0) -->
+        <div class="flex items-center gap-4">
+            <div class="bg-creme px-3 py-1.5 cutout-card border-2 border-bleuNuit/20 flex flex-col items-center leading-none select-none transform -rotate-2">
+                <span class="title-condensed text-2xl sm:text-3xl text-bleuSeine tracking-tight">QUAI</span>
+                <div class="flex items-center title-condensed text-2xl sm:text-3xl text-terracotta -mt-1">
+                    <span>1</span>
+                    <!-- Spirale Abysse Bleu Seine dans le 0 -->
+                    <svg class="w-6 h-6 sm:w-7 sm:h-7 mx-0.5 text-bleuSeine" viewBox="0 0 40 40" fill="none">
+                        <path d="M20 20C20 18.5 21.5 17.5 23 18C25 18.7 25.8 21.2 24.8 23.2C23.4 26 19.6 26.8 16.8 25.2C13 23 12.2 17.8 14.6 14C17.8 9 24.8 8.2 29.6 11.8C35.4 16.2 36.2 25 31.4 30.8C25.6 37.8 14.8 38.4 8.2 32.2C2.4 26.8 2.2 17.4 6.5 11.2" stroke="currentColor" stroke-width="3.6" stroke-linecap="round"/>
+                    </svg>
+                    <span>9</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <h1 class="title-condensed text-2xl sm:text-4xl text-bleuNuit uppercase">Rendez-vous au 109.</h1>
+                    <span class="bg-terracotta text-creme text-xs font-extrabold uppercase px-2.5 py-1 cutout-card transform rotate-1">Armada 2027</span>
+                </div>
+                <p class="text-sm sm:text-base font-semibold text-bleuNuit/85 mt-0.5">
+                    Le village des 18–25 ans • <span class="text-bleuSeine font-bold">Musique · Food · Art · Sport · Assos</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Filtres rapides par catégorie -->
+        <nav aria-label="Filtres de la carte" class="flex flex-wrap items-center gap-2">
+            <button onclick="setFilter('all')" data-filter="all" class="filter-pill cutout-card px-3.5 py-2 text-xs sm:text-sm font-extrabold uppercase tracking-wide bg-bleuSeine text-creme transform -rotate-1">
+                Tout voir
+            </button>
+            <button onclick="setFilter('barnum')" data-filter="barnum" class="filter-pill cutout-card-alt px-3.5 py-2 text-xs sm:text-sm font-extrabold uppercase tracking-wide bg-creme text-bleuNuit border-2 border-bleuNuit hover:bg-terracotta hover:text-creme hover:border-terracotta">
+                ⛺ Stands & Barnums (9)
+            </button>
+            <button onclick="setFilter('place')" data-filter="place" class="filter-pill cutout-card px-3.5 py-2 text-xs sm:text-sm font-extrabold uppercase tracking-wide bg-creme text-bleuNuit border-2 border-bleuNuit hover:bg-bleuSeine hover:text-creme hover:border-bleuSeine">
+                🎉 Scènes & Places
+            </button>
+            <button onclick="setFilter('quai')" data-filter="quai" class="filter-pill cutout-card-alt px-3.5 py-2 text-xs sm:text-sm font-extrabold uppercase tracking-wide bg-creme text-bleuNuit border-2 border-bleuNuit hover:bg-terracotta hover:text-creme hover:border-terracotta">
+                ⛵ Bateau & Quai
+            </button>
+        </nav>
+    </header>
+
+    <!-- CONTENU PRINCIPAL : CARTE RÉELLE DU QUAI + PANNEAU D'INFO COMPACT -->
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 pb-8 pt-2 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+        <!-- COLONNE GAUCHE/CENTRALE : LA CARTE RÉELLE DU QUAI (8 colonnes sur desktop) -->
+        <section aria-label="Carte interactive du Quai 109" class="lg:col-span-8 w-full">
+            
+            <!-- Légende rapide au-dessus du plan -->
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3 px-1 text-xs font-semibold text-bleuNuit">
+                <span class="flex items-center gap-1.5">
+                    <span class="inline-block w-3 h-3 bg-bleuSeine cutout-card"></span> La Seine & Bateau
+                    <span class="inline-block w-3 h-3 bg-terracotta cutout-card ml-2"></span> Places festives & Barnums
+                </span>
+                <span class="italic text-bleuNuit/75">Cliquez sur un espace du quai pour voir les infos</span>
+            </div>
+
+            <!-- CONTENEUR DE LA MAP RÉELLE (Proportion fidèle au plan fourni) -->
+            <div class="relative w-full bg-creme border-4 border-bleuNuit cutout-card overflow-hidden select-none">
+                
+                <!-- Décorations papier découpé du mood board en arrière-plan -->
+                <svg class="absolute top-3 right-36 w-12 h-12 text-terracotta pointer-events-none dance-sway opacity-90" viewBox="0 0 60 60" fill="currentColor">
+                    <!-- Soleil découpé -->
+                    <polygon points="30,2 34,18 48,8 39,22 57,21 41,29 55,40 38,35 43,53 31,39 24,56 25,38 10,49 20,34 3,33 19,26 7,13 23,20"/>
+                </svg>
+
+                <div class="grid grid-cols-12 min-h-[760px] sm:min-h-[820px]">
+
+                    <!-- 1. À GAUCHE : LA SEINE (Bleu Seine #2C5FA8) + BATEAU + MÂT -->
+                    <div id="zone-seine" class="col-span-3 sm:col-span-3 bg-bleuSeine relative border-r-[6px] border-bleuNuit flex flex-col justify-between py-6 px-2">
+                        
+                        <!-- Vagues papier découpé en haut de la Seine -->
+                        <svg class="w-full h-7 text-creme/30" viewBox="0 0 120 30" preserveAspectRatio="none" fill="currentColor">
+                            <path d="M0,15 Q15,2 30,15 T60,15 T90,15 T120,15 L120,30 L0,30 Z"/>
+                        </svg>
+
+                        <!-- Bouée / Cercle au-dessus du bateau (fidèle au plan) -->
+                        <div class="flex flex-col items-center my-auto relative z-10">
+                            <button onclick="selectSpot('bateau')" data-spot="bateau" data-cat="quai"
+                                class="spot-el cutout-interactive group flex flex-col items-center focus:outline-none">
+                                <!-- Cercle / Bouée d'amarrage -->
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-bleuNuit border-2 border-creme mb-3 flex items-center justify-center group-hover:bg-terracotta transition-colors">
+                                    <div class="w-3 h-3 rounded-full bg-creme"></div>
+                                </div>
+
+                                <!-- Grand BATEAU vertical aux coins arrondis -->
+                                <div class="w-16 sm:w-20 h-56 sm:h-64 bg-bleuNuit rounded-[26px] border-2 border-creme flex flex-col items-center justify-center py-4 px-1 relative group-hover:bg-terracotta transition-colors">
+                                    <!-- Détail pont papier découpé -->
+                                    <span class="title-condensed text-creme text-lg sm:text-xl tracking-widest leading-tight text-center">
+                                        B<br>A<br>T<br>E<br>A<br>U
+                                    </span>
+                                    <span class="mt-2 text-[10px] font-bold uppercase text-creme/80 bg-bleuSeine/60 px-1.5 py-0.5 rounded">Visite</span>
+                                </div>
+                            </button>
+                        </div>
+
+                        <!-- MÂT qui dépasse horizontalement de la Seine vers l'emprise ovale sur le quai -->
+                        <div class="relative h-28 flex items-center">
+                            <button onclick="selectSpot('mat')" data-spot="mat" data-cat="quai"
+                                class="spot-el cutout-interactive absolute left-1 sm:left-2 w-[135%] sm:w-[140%] h-7 bg-bleuNuit border-2 border-creme flex items-center justify-center transform -rotate-2 z-30 group hover:bg-terracotta">
+                                <span class="title-condensed text-creme text-xs sm:text-sm tracking-widest uppercase">MÂT</span>
+                            </button>
+                        </div>
+
+                        <!-- Vague découpée en bas -->
+                        <svg class="w-full h-8 text-creme/30" viewBox="0 0 120 30" preserveAspectRatio="none" fill="currentColor">
+                            <path d="M0,10 C20,25 40,0 60,15 C80,30 100,5 120,18 L120,30 L0,30 Z"/>
+                        </svg>
+                    </div>
+
+                    <!-- ESPLANADE DU QUAI (9 colonnes : Zone Mât + 2 Grandes Places au centre + 9 Barnums à droite) -->
+                    <div class="col-span-9 sm:col-span-9 relative grid grid-cols-12 p-3 sm:p-5 gap-2 sm:gap-4 bg-creme">
+
+                        <!-- Emprise ovale sombre du Mât / Zone technique en bas à gauche du quai (exactement comme sur la map) -->
+                        <button onclick="selectSpot('mat')" data-spot="mat" data-cat="quai"
+                            title="Zone technique du Mât"
+                            class="spot-el cutout-interactive absolute -left-6 sm:-left-8 bottom-8 sm:bottom-10 w-20 sm:w-28 h-40 sm:h-48 bg-bleuNuit rounded-full border-4 border-creme z-20 flex flex-col items-center justify-center p-2 text-center hover:bg-terracotta">
+                            <span class="title-condensed text-creme text-xs uppercase leading-tight ml-3">Zone<br>Mât</span>
+                        </button>
+
+                        <!-- 2. AU CENTRE DU QUAI : DEUX GRANDES PLACES FESTIVES SUPERPOSÉES -->
+                        <div class="col-span-8 sm:col-span-8 flex flex-col justify-between gap-5 sm:gap-6 py-2 pl-2 sm:pl-4 pr-1">
+
+                            <!-- PLACE DU HAUT : BAL DES MARINS / ZONE TRANQUILLE -->
+                            <div onclick="selectSpot('bal-marins')" data-spot="bal-marins" data-cat="place"
+                                class="spot-el cutout-interactive cutout-card bg-bleuSeine text-creme p-3.5 sm:p-5 flex-1 flex flex-col justify-between relative overflow-hidden">
+                                
+                                <!-- Guirlandes de fanions colorés en haut (Bleu Seine, Terracotta, Crème) -->
+                                <svg class="w-full h-8 -mt-2 mb-1 dance-sway" viewBox="0 0 300 36" fill="none">
+                                    <path d="M0,4 Q150,24 300,4" stroke="#F3EAD3" stroke-width="2.5"/>
+                                    <polygon points="18,7 34,9 25,25" fill="#D2673A"/>
+                                    <polygon points="48,10 64,12 55,28" fill="#F3EAD3"/>
+                                    <polygon points="78,12 94,13 85,29" fill="#1E3A6E"/>
+                                    <polygon points="108,13 124,14 115,30" fill="#D2673A"/>
+                                    <polygon points="142,14 158,14 150,31" fill="#F3EAD3"/>
+                                    <polygon points="176,13 192,13 184,30" fill="#1E3A6E"/>
+                                    <polygon points="206,12 222,10 214,28" fill="#D2673A"/>
+                                    <polygon points="236,10 252,8 244,25" fill="#F3EAD3"/>
+                                    <polygon points="266,7 282,5 274,22" fill="#D2673A"/>
+                                </svg>
+
+                                <!-- Titre de la place -->
+                                <div class="text-center my-1 z-10">
+                                    <span class="inline-block bg-terracotta text-creme text-[10px] sm:text-xs font-extrabold uppercase px-2.5 py-0.5 cutout-card mb-1 transform -rotate-1">
+                                        Samedi & Chill
+                                    </span>
+                                    <h2 class="title-condensed text-xl sm:text-3xl uppercase leading-none text-creme">
+                                        Bal des Marins<br>
+                                        <span class="text-creme/90 text-lg sm:text-2xl">/ Zone Tranquille</span>
+                                    </h2>
+                                </div>
+
+                                <!-- Illustration papier découpé : fauteuils/transats, guirlandes et danseurs -->
+                                <div class="mt-2 pt-2 border-t-2 border-creme/25 flex items-end justify-around gap-2">
+                                    <!-- Fauteuil / Transat Chill Terracotta -->
+                                    <div class="flex flex-col items-center">
+                                        <svg class="w-10 h-10 sm:w-12 sm:h-12 text-terracotta" viewBox="0 0 48 48" fill="currentColor">
+                                            <path d="M8,36 L16,12 L22,14 L15,34 L38,34 L38,39 L8,39 Z"/>
+                                            <path d="M14,26 L36,28 L35,32 L13,30 Z" fill="#F3EAD3"/>
+                                        </svg>
+                                        <span class="text-[10px] font-bold uppercase text-creme/90">Fauteuils</span>
+                                    </div>
+
+                                    <!-- Personnages qui dansent en ronde (fidèle au mood board) -->
+                                    <div class="flex items-center gap-1 dance-sway-delay">
+                                        <svg class="w-9 h-11 sm:w-11 sm:h-12 text-creme" viewBox="0 0 40 48" fill="currentColor">
+                                            <circle cx="20" cy="8" r="5"/>
+                                            <path d="M14,15 L26,15 L28,28 L24,45 L19,45 L20,30 L16,45 L11,45 L13,28 Z"/>
+                                            <path d="M14,17 L5,9 L8,6 L16,14 Z"/>
+                                            <path d="M26,17 L35,9 L32,6 L24,14 Z"/>
+                                        </svg>
+                                        <svg class="w-9 h-11 sm:w-11 sm:h-12 text-terracotta" viewBox="0 0 40 48" fill="currentColor">
+                                            <circle cx="20" cy="8" r="5"/>
+                                            <path d="M14,15 L26,15 L29,29 L25,45 L20,45 L20,30 L15,45 L10,45 L12,29 Z"/>
+                                            <path d="M14,17 L4,14 L5,10 L15,14 Z"/>
+                                            <path d="M26,17 L36,12 L34,8 L24,14 Z"/>
+                                        </svg>
+                                    </div>
+
+                                    <!-- Table conviviale -->
+                                    <div class="flex flex-col items-center">
+                                        <svg class="w-10 h-10 sm:w-12 sm:h-12 text-creme" viewBox="0 0 48 48" fill="currentColor">
+                                            <rect x="6" y="22" width="36" height="5" rx="1"/>
+                                            <rect x="11" y="27" width="4" height="13"/>
+                                            <rect x="33" y="27" width="4" height="13"/>
+                                            <rect x="4" y="31" width="10" height="3" fill="#D2673A"/>
+                                            <rect x="34" y="31" width="10" height="3" fill="#D2673A"/>
+                                        </svg>
+                                        <span class="text-[10px] font-bold uppercase text-creme/90">Guinguette</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PLACE DU BAS : DANSE / SOIRÉE DJ -->
+                            <div onclick="selectSpot('soiree-dj')" data-spot="soiree-dj" data-cat="place"
+                                class="spot-el cutout-interactive cutout-card-alt bg-terracotta text-creme p-3.5 sm:p-5 flex-1 flex flex-col justify-between relative overflow-hidden">
+                                
+                                <!-- Guirlandes festives en haut -->
+                                <svg class="w-full h-8 -mt-2 mb-1 dance-sway-delay" viewBox="0 0 300 36" fill="none">
+                                    <path d="M0,5 Q150,25 300,5" stroke="#1E3A6E" stroke-width="2.5"/>
+                                    <polygon points="20,8 36,10 27,26" fill="#2C5FA8"/>
+                                    <polygon points="52,11 68,12 59,28" fill="#F3EAD3"/>
+                                    <polygon points="84,13 100,14 91,30" fill="#1E3A6E"/>
+                                    <polygon points="116,14 132,14 124,30" fill="#2C5FA8"/>
+                                    <polygon points="148,14 164,14 156,31" fill="#F3EAD3"/>
+                                    <polygon points="180,14 196,13 188,30" fill="#1E3A6E"/>
+                                    <polygon points="212,12 228,10 220,28" fill="#2C5FA8"/>
+                                    <polygon points="244,9 260,7 252,24" fill="#F3EAD3"/>
+                                </svg>
+
+                                <!-- Titre de la place -->
+                                <div class="text-center my-1 z-10">
+                                    <span class="inline-block bg-bleuSeine text-creme text-[10px] sm:text-xs font-extrabold uppercase px-2.5 py-0.5 cutout-card mb-1 transform rotate-1">
+                                        Scène Principale • Samedi Soir
+                                    </span>
+                                    <h2 class="title-condensed text-2xl sm:text-3xl uppercase leading-none text-creme">
+                                        Danse<br>Soirée DJ
+                                    </h2>
+                                </div>
+
+                                <!-- Illustration scène DJ, enceintes & danseurs découpés -->
+                                <div class="mt-2 pt-2 border-t-2 border-creme/25 flex items-end justify-around gap-2">
+                                    <!-- Enceinte gauche -->
+                                    <div class="flex flex-col items-center">
+                                        <div class="w-7 h-10 bg-bleuNuit cutout-card flex flex-col items-center justify-around py-1">
+                                            <span class="w-2.5 h-2.5 rounded-full bg-creme"></span>
+                                            <span class="w-3.5 h-3.5 rounded-full bg-bleuSeine"></span>
+                                        </div>
+                                        <span class="text-[10px] font-bold uppercase mt-0.5">Son</span>
+                                    </div>
+
+                                    <!-- Platines DJ & Danseurs -->
+                                    <div class="flex items-end gap-2">
+                                        <svg class="w-9 h-11 text-bleuSeine dance-sway" viewBox="0 0 40 48" fill="currentColor">
+                                            <circle cx="20" cy="8" r="5"/>
+                                            <path d="M13,15 L27,15 L26,29 L31,45 L25,45 L20,31 L14,45 L9,45 L14,29 Z"/>
+                                            <path d="M13,17 L4,8 L7,5 L16,14 Z"/>
+                                            <path d="M27,17 L36,22 L34,25 L25,20 Z"/>
+                                        </svg>
+
+                                        <div class="bg-bleuSeine px-2.5 py-1.5 cutout-card text-center">
+                                            <span class="title-condensed text-xs sm:text-sm uppercase text-creme block">Booth DJ</span>
+                                            <div class="flex gap-1 justify-center mt-0.5">
+                                                <span class="w-2.5 h-2.5 rounded-full bg-creme"></span>
+                                                <span class="w-2.5 h-2.5 rounded-full bg-creme"></span>
+                                            </div>
+                                        </div>
+
+                                        <svg class="w-9 h-11 text-creme dance-sway-delay" viewBox="0 0 40 48" fill="currentColor">
+                                            <circle cx="20" cy="8" r="5"/>
+                                            <path d="M14,15 L26,15 L28,28 L24,45 L19,45 L20,30 L16,45 L11,45 L13,28 Z"/>
+                                            <path d="M26,17 L36,8 L33,5 L24,14 Z"/>
+                                        </svg>
+                                    </div>
+
+                                    <!-- Fauteuils lounge bord de piste -->
+                                    <div class="flex flex-col items-center">
+                                        <svg class="w-9 h-10 text-bleuNuit" viewBox="0 0 48 48" fill="currentColor">
+                                            <path d="M10,36 L17,14 L22,16 L16,34 L38,34 L38,39 L10,39 Z"/>
+                                        </svg>
+                                        <span class="text-[10px] font-bold uppercase mt-0.5">Lounge</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- 3. À DROITE DU QUAI : LA RANGÉE VERTICALE EXACTE DE 9 STANDS EN BARNUMS DÉCOUPÉS -->
+                        <div class="col-span-4 sm:col-span-4 flex flex-col justify-between gap-2 py-1 pl-1">
+                            
+                            <!-- GRAND BARNUM RECTANGULAIRE ALLONGÉ EN HAUT : BUVETTE -->
+                            <button onclick="selectSpot('buvette')" data-spot="buvette" data-cat="barnum"
+                                class="spot-el cutout-interactive w-full flex flex-col items-stretch text-left group focus:outline-none mb-2">
+                                <!-- Toit festonné du grand barnum Buvette -->
+                                <div class="barnum-roof h-5 bg-terracotta flex items-center justify-around px-2">
+                                    <span class="w-2 h-2 rounded-full bg-creme/80"></span>
+                                    <span class="w-2 h-2 rounded-full bg-creme/80"></span>
+                                    <span class="w-2 h-2 rounded-full bg-creme/80"></span>
+                                </div>
+                                <!-- Corps allongé du barnum Buvette -->
+                                <div class="barnum-body bg-bleuNuit text-creme py-5 sm:py-6 px-2.5 flex flex-col items-center justify-center text-center group-hover:bg-bleuSeine transition-colors">
+                                    <span class="text-[10px] font-bold uppercase tracking-wider text-terracotta bg-creme px-1.5 py-0.2 rounded mb-1">Barnum XL</span>
+                                    <span class="title-condensed text-base sm:text-xl uppercase tracking-wide leading-tight">Buvette</span>
+                                    <span class="text-[10px] text-creme/80 mt-0.5">Boissons & Softs</span>
+                                </div>
+                            </button>
+
+                            <!-- LES 8 BARNUMS CARRÉS ALIGNÉS VERTICALEMENT AVEC ESPACEMENT RÉGULIER -->
+                            <div id="barnums-stack" class="flex flex-col gap-2">
+                                <!-- Injectés proprement en JS avec alternance Bleu Seine / Terracotta -->
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COLONNE DROITE : TIROIR D'INFORMATION COMPACT INTÉGRÉ (4 colonnes sur desktop, en bas sur mobile) -->
+        <aside aria-label="Détails de l'espace sélectionné" class="lg:col-span-4 w-full lg:sticky lg:top-4">
+            <div id="info-drawer" class="bg-creme border-4 border-bleuNuit cutout-card-alt p-5 sm:p-6 relative">
+                
+                <!-- Forme découpée décorative (Étoile Bleu Seine) -->
+                <svg class="absolute -bottom-3 -right-3 w-12 h-12 text-bleuSeine/20 pointer-events-none" viewBox="0 0 50 50" fill="currentColor">
+                    <polygon points="25,2 31,18 48,18 34,28 39,45 25,35 11,45 16,28 2,18 19,18"/>
+                </svg>
+
+                <!-- Badge type de lieu -->
+                <div class="flex items-center justify-between gap-2 mb-3">
+                    <span id="drawer-badge" class="bg-bleuSeine text-creme text-xs font-extrabold uppercase px-3 py-1 cutout-card">
+                        Place Festive
+                    </span>
+                    <span id="drawer-hours" class="text-xs font-extrabold text-terracotta bg-terracotta/15 px-2.5 py-1 rounded">
+                        Samedi • 10h30 – 17h00
+                    </span>
+                </div>
+
+                <!-- Titre du lieu sélectionné -->
+                <h2 id="drawer-title" class="title-condensed text-2xl sm:text-3xl text-bleuNuit uppercase leading-tight mb-2">
+                    Bal des Marins & Zone Tranquille
+                </h2>
+
+                <!-- Sous-titre / Thématique -->
+                <p id="drawer-theme" class="text-xs font-bold uppercase tracking-wider text-bleuSeine mb-3">
+                    Musique · Détente · Guinguette
+                </p>
+
+                <!-- Description de l'ambiance -->
+                <p id="drawer-desc" class="text-sm sm:text-base text-bleuNuit leading-relaxed mb-5">
+                    Le cœur convivial du Quai 109 en journée ! Installez-vous dans les fauteuils sous les guirlandes de fanions, partagez un verre entre amis et profitez des chants marins et sets acoustiques face aux grands voiliers.
+                </p>
+
+                <!-- Points forts / Équipements sur place -->
+                <div class="bg-bleuSeine/10 p-3.5 cutout-card mb-5">
+                    <h3 class="text-xs font-extrabold uppercase text-bleuNuit mb-2">Sur cet espace :</h3>
+                    <ul id="drawer-highlights" class="space-y-1.5 text-xs sm:text-sm font-semibold text-bleuNuit">
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-terracotta inline-block"></span> Guirlandes festives & fanions</li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-terracotta inline-block"></span> Fauteuils chill & grandes tables</li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-terracotta inline-block"></span> Ambiance bal populaire & acoustique</li>
+                    </ul>
+                </div>
+
+                <!-- Navigation rapide entre les lieux du quai -->
+                <div class="pt-3 border-t-2 border-bleuNuit/15">
+                    <span class="block text-[11px] font-extrabold uppercase text-bleuNuit/70 mb-2">Accès direct aux espaces :</span>
+                    <div id="quick-pills" class="flex flex-wrap gap-1.5">
+                        <!-- Généré dynamiquement -->
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </main>
+
+    <script>
+        // Données exactes des espaces de la carte réelle QUAI 109
+        const SPOTS = {
+            'bal-marins': {
+                id: 'bal-marins',
+                cat: 'place',
+                badge: 'Place Festive • Centre Haut',
+                title: 'Bal des Marins / Zone Tranquille',
+                hours: 'Samedi • 10h30 – 17h00',
+                theme: 'Musique · Détente · Guinguette',
+                desc: 'Une grande place conviviale décorée de guirlandes de fanions colorés. Venez vous poser dans les fauteuils, danser en ronde au rythme du Bal des Marins ou simplement profiter du calme face à la Seine.',
+                highlights: [
+                    'Guirlandes de fanions Bleu Seine & Terracotta',
+                    'Fauteuils de détente et grandes tablées partagées',
+                    'Concerts acoustiques & bal traditionnel revisité'
+                ]
+            },
+            'soiree-dj': {
+                id: 'soiree-dj',
+                cat: 'place',
+                badge: 'Scène & Fête • Centre Bas',
+                title: 'Danse & Soirée DJ',
+                hours: '17h00 – 02h00 (Samedi Soir)',
+                theme: 'Musique · Dancefloor · Électro & Pop',
+                desc: 'À la tombée du jour, la place centrale s’illumine sous les guirlandes pour laisser place à la piste de danse. Line-up DJ jeunesse 18–25 ans, scénographie papier découpé et ambiance survoltée.',
+                highlights: [
+                    'Scène DJ ouverte sur le quai',
+                    'Guirlandes lumineuses & coins lounge avec fauteuils',
+                    'Programmation musicale 100% jeunes talents'
+                ]
+            },
+            'buvette': {
+                id: 'buvette',
+                cat: 'barnum',
+                badge: 'Grand Barnum • Haut Droite',
+                title: 'La Buvette du 109',
+                hours: '10h30 – 02h00',
+                theme: 'Food · Boissons · Prix Solidaires',
+                desc: 'Le grand barnum rectangulaire tout en haut de l’allée des stands. Boissons fraîches locales, citronnades maison, mocktails et encas à tarifs accessibles pour les 18–25 ans.',
+                highlights: [
+                    'Grand barnum abrité avec comptoir ouvert',
+                    'Boissons locales & options sans alcool',
+                    'Éco-cups collectors QUAI 109'
+                ]
+            },
+            'popup': {
+                id: 'popup',
+                cat: 'barnum',
+                badge: 'Barnum #1 • Allée Droite',
+                title: 'Pop-Up Créateurs',
+                hours: '10h30 – 17h00',
+                theme: 'Art · Mode · Création Locale',
+                desc: 'Un barnum dédié aux jeunes créateurs normands : sérigraphies, affiches style papier découpé, accessoires marins revisités et éditions limitées Armada 2027.',
+                highlights: [
+                    'Exposition-vente de jeunes artistes',
+                    'Affiches et goodies officiels du Quai 109',
+                    'Rencontres avec les créateurs sur place'
+                ]
+            },
+            'tattoo': {
+                id: 'tattoo',
+                cat: 'barnum',
+                badge: 'Barnum #2 • Allée Droite',
+                title: 'Stand Tattoo Flash',
+                hours: '10h30 – 17h00',
+                theme: 'Art · Tatouage · Flashs Marins',
+                desc: 'Barnum aménagé pour des tatouages flashs éphémères ou permanents inspirés de l’univers marin : ancres, soleils, vagues et méduses découpées.',
+                highlights: [
+                    'Planche de flashs exclusifs Armada 2027',
+                    'Tatouages éphémères à l’encre naturelle & permanents',
+                    'Espace stérile et sécurisé sous barnum'
+                ]
+            },
+            'strass': {
+                id: 'strass',
+                cat: 'barnum',
+                badge: 'Barnum #3 • Allée Droite',
+                title: 'Bar à Strass & Paillettes',
+                hours: '10h30 – 17h00',
+                theme: 'Art · Beauté · Festif',
+                desc: 'Préparez-vous pour le Bal des Marins et la soirée DJ avec des strass dentaires, maquillages graphiques et paillettes biodégradables.',
+                highlights: [
+                    'Paillettes 100% biodégradables',
+                    'Pose de strass et maquillage festival',
+                    'Accès libre toute la journée'
+                ]
+            },
+            'friperie': {
+                id: 'friperie',
+                cat: 'barnum',
+                badge: 'Barnum #4 • Allée Droite',
+                title: 'Friperie & Seconde Main',
+                hours: '10h30 – 17h00',
+                theme: 'Assos · Mode Responsable · Vintage',
+                desc: 'Chinez des marinières vintage, vestes de quart et pièces uniques sélectionnées par des associations étudiantes et solidaires.',
+                highlights: [
+                    'Sélection vêtements marins & streetwear vintage',
+                    'Tarifs solidaires étudiants & jeunes actifs',
+                    'Animé par les assos jeunesse'
+                ]
+            },
+            'piercing': {
+                id: 'piercing',
+                cat: 'barnum',
+                badge: 'Barnum #5 • Allée Droite',
+                title: 'Stand Piercing',
+                hours: '10h30 – 17h00',
+                theme: 'Art · Style · Bijoux',
+                desc: 'Espace piercing professionnel sous barnum dédié avec bijoux en titane et conseils d’entretien personnalisés.',
+                highlights: [
+                    'Bijoux minimalistes et inspirés de la mer',
+                    'Protocole d’hygiène strict sous barnum fermé',
+                    'Sans rendez-vous selon affluence'
+                ]
+            },
+            'cils': {
+                id: 'cils',
+                cat: 'barnum',
+                badge: 'Barnum #6 • Allée Droite',
+                title: 'Atelier Cils & Regard',
+                hours: '10h30 – 17h00',
+                theme: 'Beauté · Bien-être · Express',
+                desc: 'Mise en beauté express du regard, rehaussement et touches colorées Bleu Seine ou Terracotta pour briller sur le quai.',
+                highlights: [
+                    'Prestations rapides format festival',
+                    'Conseils personnalisés par des jeunes pros',
+                    'Ambiance détendue sous barnum'
+                ]
+            },
+            'barbier': {
+                id: 'barbier',
+                cat: 'barnum',
+                badge: 'Barnum #7 • Allée Droite',
+                title: 'Barbier du Quai',
+                hours: '10h30 – 17h00',
+                theme: 'Style · Coiffure · Rencontres',
+                desc: 'Coupe fraîche, taille de barbe et motifs graphiques avant le grand bal du samedi.',
+                highlights: [
+                    'Taille de barbe & coupes express',
+                    'Fauteuil barbier installé sous barnum',
+                    'Ambiance musicale conviviale'
+                ]
+            },
+            'grillz': {
+                id: 'grillz',
+                cat: 'barnum',
+                badge: 'Barnum #8 • Bas Droite',
+                title: '💎 Stand Grillz',
+                hours: '10h30 – 17h00',
+                theme: 'Beauté · Style · Bijoux Dentaires',
+                desc: 'Le barnum dédié aux bijoux dentaires : prise d’empreintes sur mesure, grillz argentés ou dorés, strass et créations métalliques inspirées de l’univers marin.',
+                highlights: [
+                    'Prise d’empreintes personnalisées sur place',
+                    'Grillz sur mesure, bijoux dentaires et strass',
+                    'Créations exclusives spéciales Armada 2027'
+                ]
+            },
+            'bateau': {
+                id: 'bateau',
+                cat: 'quai',
+                badge: 'Sur la Seine • Quai Ouest',
+                title: 'Le Bateau Amarré',
+                hours: '10h30 – 18h00',
+                theme: 'Univers Marin · Visite · Panorama',
+                desc: 'Amarré directement le long du Quai 109, ce navire emblématique de l’Armada 2027 accueille les jeunes pour des visites de pont et des rencontres avec l’équipage.',
+                highlights: [
+                    'Accès direct depuis la bordure du quai',
+                    'Vue imprenable sur le village et la Seine',
+                    'Rencontres avec les marins'
+                ]
+            },
+            'mat': {
+                id: 'mat',
+                cat: 'quai',
+                badge: 'Repère Technique • Sud-Ouest',
+                title: 'Le Mât & Zone d’Emprise',
+                hours: 'Permanent',
+                theme: 'Architecture Navale · Repère',
+                desc: 'Le grand mât surplombe la partie sud du quai avec son périmètre de sécurité ovale au sol. Un repère visuel incontournable pour se retrouver au 109 !',
+                highlights: [
+                    'Point de rendez-vous facile sur le quai',
+                    'Zone de sécurité délimitée au sol',
+                    'Perspective spectaculaire sur le gréement'
+                ]
+            }
+        };
+
+        // Ordre exact des 8 barnums carrés à droite sous la Buvette
+        const SQUARE_BARNUMS = [
+            { id: 'popup', label: 'Pop-Up', sub: 'Créateurs' },
+            { id: 'tattoo', label: 'Tattoo', sub: 'Flashs' },
+            { id: 'strass', label: 'Strass', sub: 'Paillettes' },
+            { id: 'friperie', label: 'Friperie', sub: 'Vintage' },
+            { id: 'piercing', label: 'Piercing', sub: 'Bijoux' },
+            { id: 'cils', label: 'Cils', sub: 'Regard' },
+            { id: 'barbier', label: 'Barbier', sub: 'Style' },
+            { id: 'grillz', label: '💎 Grillz', sub: 'Bijoux' }
+        ];
+
+        let activeSpotId = 'bal-marins';
+        let activeFilter = 'all';
+
+        // Génération des 8 barnums carrés alignés à droite
+        function renderBarnums() {
+            const container = document.getElementById('barnums-stack');
+            container.innerHTML = SQUARE_BARNUMS.map((b, idx) => {
+                // Alternance Bleu Seine et Terracotta comme sur le mood board
+                const isBlue = idx % 2 === 0;
+                const roofColor = isBlue ? 'bg-terracotta' : 'bg-bleuSeine';
+                const bodyColor = isBlue ? 'bg-bleuSeine' : 'bg-terracotta';
+                const shapeClass = isBlue ? 'cutout-card' : 'cutout-card-alt';
+
+                return `
+                    <button onclick="selectSpot('${b.id}')" data-spot="${b.id}" data-cat="barnum"
+                        class="spot-el cutout-interactive w-full flex flex-col items-stretch text-left group focus:outline-none">
+                        <!-- Toit découpé du barnum -->
+                        <div class="barnum-roof h-3.5 ${roofColor} flex items-center justify-around px-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-creme/80"></span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-creme/80"></span>
+                        </div>
+                        <!-- Corps carré du barnum -->
+                        <div class="${shapeClass} ${bodyColor} text-creme py-2.5 sm:py-3 px-2 flex flex-col items-center justify-center text-center group-hover:bg-bleuNuit transition-colors">
+                            <span class="title-condensed text-sm sm:text-base uppercase leading-none tracking-wide">${b.label}</span>
+                            <span class="text-[10px] font-semibold text-creme/85 mt-0.5">${b.sub}</span>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Génération des pastilles d'accès rapide dans le tiroir
+        function renderQuickPills() {
+            const container = document.getElementById('quick-pills');
+            const keys = ['bal-marins', 'soiree-dj', 'buvette', 'popup', 'tattoo', 'strass', 'friperie', 'piercing', 'cils', 'barbier', 'grillz', 'bateau'];
+            container.innerHTML = keys.map(key => {
+                const spot = SPOTS[key];
+                const isSelected = key === activeSpotId;
+                const shortName = spot.title.split('/')[0].replace('La ', '').replace('Stand ', '').replace('Le ', '').trim();
+                return `
+                    <button onclick="selectSpot('${key}')"
+                        class="px-2 py-1 text-[11px] font-bold uppercase cutout-card transition-colors ${isSelected ? 'bg-terracotta text-creme' : 'bg-bleuNuit/10 text-bleuNuit hover:bg-bleuSeine hover:text-creme'}">
+                        ${shortName}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        // Sélection d'un espace sur la carte et mise à jour du tiroir compact
+        function selectSpot(id) {
+            const spot = SPOTS[id];
+            if (!spot) return;
+
+            activeSpotId = id;
+
+            // Mise en évidence visuelle sur la map
+            document.querySelectorAll('.spot-el').forEach(el => {
+                el.classList.toggle('is-active', el.dataset.spot === id);
+            });
+
+            // Mise à jour du tiroir d'info
+            document.getElementById('drawer-badge').textContent = spot.badge;
+            document.getElementById('drawer-hours').textContent = spot.hours;
+            document.getElementById('drawer-title').textContent = spot.title;
+            document.getElementById('drawer-theme').textContent = spot.theme;
+            document.getElementById('drawer-desc').textContent = spot.desc;
+
+            const highlightsList = document.getElementById('drawer-highlights');
+            highlightsList.innerHTML = spot.highlights.map(item => `
+                <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-terracotta inline-block shrink-0"></span>
+                    <span>${item}</span>
+                </li>
+            `).join('');
+
+            renderQuickPills();
+
+            // Sur mobile, défilement doux vers le panneau d'info si nécessaire
+            if (window.innerWidth < 1024) {
+                document.getElementById('info-drawer').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
+        // Filtrage visuel par catégorie sur la map
+        function setFilter(cat) {
+            activeFilter = cat;
+
+            // Mise à jour des boutons de filtre
+            document.querySelectorAll('.filter-pill').forEach(btn => {
+                const isCurrent = btn.dataset.filter === cat;
+                if (isCurrent) {
+                    btn.classList.remove('bg-creme', 'text-bleuNuit', 'border-2', 'border-bleuNuit');
+                    btn.classList.add('bg-bleuSeine', 'text-creme');
+                } else {
+                    btn.classList.remove('bg-bleuSeine', 'text-creme');
+                    btn.classList.add('bg-creme', 'text-bleuNuit', 'border-2', 'border-bleuNuit');
+                }
+            });
+
+            // Atténuation douce des éléments hors filtre sur la carte
+            document.querySelectorAll('.spot-el').forEach(el => {
+                if (cat === 'all' || el.dataset.cat === cat) {
+                    el.style.opacity = '1';
+                    el.style.filter = 'none';
+                } else {
+                    el.style.opacity = '0.28';
+                }
+            });
+        }
+
+        // Initialisation au chargement
+        window.addEventListener('DOMContentLoaded', () => {
+            renderBarnums();
+            selectSpot('bal-marins');
+        });
+    </script>
+</body>
+</html>
